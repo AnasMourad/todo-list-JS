@@ -18,8 +18,19 @@ var addTask = function(){
 //edit existing task
 var editTask = function(){
 
-    console.log("edit task");
+    var element = $(this.parentNode);
+    if(element.hasClass("editMode")){
+        var val = element.get(0).querySelector("input[type=text]").value;
+        console.log(val);
+        $(element).removeClass("editMode");
+        element.get(0).querySelector("label").innerHTML= val;
+    }else{
 
+        var label = (element.get(0).querySelector("label").innerHTML);
+        element.addClass("editMode");
+        element.get(0).querySelector("input[type=text]").value=label;
+
+    }
 }
 //mark a task as complete
 var  taskCompleted = function(){
